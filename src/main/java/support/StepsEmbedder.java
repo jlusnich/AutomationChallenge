@@ -29,7 +29,7 @@ public class StepsEmbedder extends Embedder {
 
     @Override
     public EmbedderControls embedderControls() {
-        return new EmbedderControls().doIgnoreFailureInStories(true).doIgnoreFailureInView(false).doVerboseFailures(true)
+        return new EmbedderControls().doIgnoreFailureInStories(false).doIgnoreFailureInView(false).doVerboseFailures(true)
                 .useStoryTimeouts("5000");
     }
 
@@ -52,7 +52,12 @@ public class StepsEmbedder extends Embedder {
         String codeLocation = CodeLocations.codeLocationFromClass(this.getClass()).getFile();
         codeLocation = codeLocation.replace("%20", " ");
         List<String> stories = finder.findPaths(codeLocation, Arrays.asList(storyName), Arrays.asList(""));
-        runStoriesAsPaths(stories);
-        driver.close();
+        try {
+            runStoriesAsPaths(stories);
+        } catch (Exception e){
+            throw e;
+        } finally {
+            driver.close();
+        }
     }
 }
