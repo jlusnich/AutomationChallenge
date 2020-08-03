@@ -12,6 +12,7 @@ import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.openqa.selenium.WebDriver;
+import steps.AmazonSearchSteps;
 import steps.CommonSteps;
 
 import java.util.Arrays;
@@ -34,8 +35,11 @@ public class StepsEmbedder extends Embedder {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
+        AmazonSearchSteps amazonSearchSteps = new AmazonSearchSteps();
         CommonSteps commonSteps = new CommonSteps();
+
         List<Object> listSteps = Lists.newArrayList();
+        listSteps.add(amazonSearchSteps);
         listSteps.add(commonSteps);
 
 		return new InstanceStepsFactory(configuration(), listSteps);
