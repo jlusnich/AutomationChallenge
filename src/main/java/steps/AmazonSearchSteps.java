@@ -22,4 +22,14 @@ public class AmazonSearchSteps{
         amazonSearchProcess.goToPage(pageNumber);
     }
 
+    @Given("Selects the item number '$elementNumber'")
+    public void selectItem(int elementNumber) {
+        amazonSearchProcess.selectItem(elementNumber);
+    }
+
+    @Then("The item is available for purchase")
+    public void theItemIsAvailableForPurchase() {
+        amazonSearchProcess.verifyItemIsAvailableForPurchase();
+    }
+
 }

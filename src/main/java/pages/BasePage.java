@@ -50,7 +50,7 @@ public class BasePage {
         getElement(locator);
     }
 
-    private WebElement getElement(String locator) {
+    public WebElement getElement(String locator) {
         return waitForElement().until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(locator)));
     }
 
@@ -81,5 +81,14 @@ public class BasePage {
         }
         Assert.assertTrue(result != null, "It was not possible to find child element");
         return result;
+    }
+
+    public String getTextFromElement(String locator){
+        return getElement(locator).getText();
+    }
+
+    public boolean isElementEnabled(String locator){
+        WebElement elem = getElement(locator);
+        return elem.isEnabled();
     }
 }

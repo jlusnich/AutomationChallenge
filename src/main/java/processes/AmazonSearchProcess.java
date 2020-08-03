@@ -19,4 +19,12 @@ public class AmazonSearchProcess {
         amazonSearchActions.goToPage(pageNumber);
     }
 
+    public void selectItem(int elementNumber) {
+        amazonSearchActions.selectItem(elementNumber);
+    }
+
+    public void verifyItemIsAvailableForPurchase() {
+        amazonSearchActions.verifyItemIsAvailableForPurchase();
+    }
+
 }
