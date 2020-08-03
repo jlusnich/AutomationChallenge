@@ -12,6 +12,7 @@ import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.openqa.selenium.WebDriver;
+import steps.CommonSteps;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,7 +34,9 @@ public class StepsEmbedder extends Embedder {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
+        CommonSteps commonSteps = new CommonSteps();
         List<Object> listSteps = Lists.newArrayList();
+        listSteps.add(commonSteps);
 
 		return new InstanceStepsFactory(configuration(), listSteps);
 
